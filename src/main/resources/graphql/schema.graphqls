@@ -1,0 +1,24 @@
+type Subscription {
+  event(where:EventFilter): SiteEvent
+}
+
+input EventFilter
+{
+	eventTypes: [String]
+	timeAfter: String        
+    timeBefore: String
+    and: [EventFilter]
+    or: [EventFilter]
+}
+
+type SiteEvent {
+    id: ID!
+    data: String
+    eventType: String
+    timeStamp: String
+}
+
+type Query
+{
+  getEvent: SiteEvent
+}
